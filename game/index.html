@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Vista — a spot-the-difference hunt</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23e8a33d' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- The countdown bar runs across the very top of the frame, so the time
+       pressure is visible in every moment of play. timer.js drains it. -->
+  <div id="timer-track" aria-hidden="true"><div id="timer-fill"></div></div>
+
+  <header id="hud">
+    <div class="brand">
+      <h1>Twin Vista</h1>
+      <p id="scene-name">Scene 1 of 3 · Harbour at Dusk</p>
+    </div>
+
+    <!-- The counter the hunt is played against: how many differences remain. -->
+    <div id="counter" title="Differences still to find">
+      <span id="remaining-count">7</span>
+      <small>to find</small>
+    </div>
+
+    <div class="hud-stats">
+      <p>Found <strong id="found-count">0</strong></p>
+      <p>Score <strong id="score">0</strong></p>
+      <p>Time <strong id="clock">3:00</strong></p>
+    </div>
+
+    <div class="hud-actions">
+      <button id="hint-btn" type="button">Hint · <span id="hints-left">3</span> left</button>
+      <button id="pause-btn" type="button">Pause</button>
+    </div>
+  </header>
+
+  <main id="stage">
+    <figure class="panel-wrap">
+      <canvas id="panel-left" width="560" height="400"></canvas>
+      <figcaption>The scene as it was</figcaption>
+    </figure>
+    <figure class="panel-wrap">
+      <canvas id="panel-right" width="560" height="400"></canvas>
+      <figcaption>The scene as it is — click a difference in either picture</figcaption>
+    </figure>
+  </main>
+
+  <footer id="help">
+    <p>Click a difference in either picture to mark it in both. A wrong click costs 5 seconds.
+       <strong>H</strong> spends a hint, <strong>P</strong> pauses.</p>
+  </footer>
+
+  <!-- One overlay for every between-moments screen: start, pause, scene
+       complete, time up and the end of the game. main.js fills it in. -->
+  <div id="overlay">
+    <div id="overlay-card">
+      <h2 id="overlay-title">Twin Vista</h2>
+      <p id="overlay-text"></p>
+      <button id="overlay-btn" type="button">Start the hunt</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
